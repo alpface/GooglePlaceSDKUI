@@ -8,7 +8,7 @@
 
 #import "GMSAutocompleteFetcher.h"
 #import "GMSAutocompleteFilter.h"
-#import "GMSPlacesClient.h"
+#import  "GMSPlacesClient.h"
 
 @interface GMSAutocompleteFetcher ()
 {

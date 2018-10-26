@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DemoAppDelegate.h
 //  GooglePlaces
 //
 //  Created by xiaoyuan on 2018/10/26.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface DemoAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property(strong, nonatomic) UIWindow *window;
 
 @end
-
