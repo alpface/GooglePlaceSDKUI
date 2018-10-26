@@ -22,4 +22,4 @@
  * https://developers.google.com/places/ios-api/start#get-key
  */
 
-static NSString *const kAPIKey = @"";
+static NSString *const kAPIKey = @"gdsfsdfsdfsdf";

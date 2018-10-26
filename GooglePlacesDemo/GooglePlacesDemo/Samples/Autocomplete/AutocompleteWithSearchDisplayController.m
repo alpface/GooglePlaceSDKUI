@@ -19,13 +19,13 @@
 /* The default height of a UISearchBar. */
 static CGFloat kSearchBarHeight = 44.0f;
 
-@interface AutocompleteWithSearchDisplayController () <ERAutocompleteTableDataSourceDelegate,
+@interface AutocompleteWithSearchDisplayController () <GMSAutocompleteTableDataSourceDelegate,
                                                        UISearchDisplayDelegate>
 @end
 
 @implementation AutocompleteWithSearchDisplayController {
   UISearchDisplayController *_searchDisplayController;
-  ERAutocompleteTableDataSource *_tableDataSource;
+  GMSAutocompleteTableDataSource *_tableDataSource;
 }
 
 + (NSString *)demoTitle {
@@ -49,7 +49,7 @@ static CGFloat kSearchBarHeight = 44.0f;
       UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
 
   // Construct the autocomplete table datasource.
-  _tableDataSource = [[ERAutocompleteTableDataSource alloc] init];
+  _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
   _tableDataSource.delegate = self;
 
   // Configure a UISearchDisplayController.
@@ -78,16 +78,16 @@ static CGFloat kSearchBarHeight = 44.0f;
   [_tableDataSource sourceTextHasChanged:@""];
 }
 
-#pragma mark - ERAutocompleteTableDataSourceDelegate
+#pragma mark - GMSAutocompleteTableDataSourceDelegate
 
-- (void)tableDataSource:(ERAutocompleteTableDataSource *)tableDataSource
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
+    didAutocompleteWithPlace:(GMSPlace *)place {
   // Tell our superclass to show the results, and dismiss the search controller.
   [self autocompleteDidSelectPlace:place];
   [_searchDisplayController setActive:NO animated:YES];
 }
 
-- (void)tableDataSource:(ERAutocompleteTableDataSource *)tableDataSource
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
     didFailAutocompleteWithError:(NSError *)error {
   // Tell our superclass to show the error, and dismiss the search controller.
   [self autocompleteDidFail:error];
@@ -95,14 +95,14 @@ static CGFloat kSearchBarHeight = 44.0f;
 }
 
 - (void)didRequestAutocompletePredictionsForTableDataSource:
-    (ERAutocompleteTableDataSource *)tableDataSource {
+    (GMSAutocompleteTableDataSource *)tableDataSource {
   // Start the network activity indicator and reload the table of results.
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
   [_searchDisplayController.searchResultsTableView reloadData];
 }
 
 - (void)didUpdateAutocompletePredictionsForTableDataSource:
-    (ERAutocompleteTableDataSource *)tableDataSource {
+    (GMSAutocompleteTableDataSource *)tableDataSource {
   // Stop the network activity indicator and reload the table of results.
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
   [_searchDisplayController.searchResultsTableView reloadData];

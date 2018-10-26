@@ -18,13 +18,13 @@
 #import <GooglePlaces/GooglePlaces.h>
 
 @interface AutocompleteWithTextFieldController () <UITextFieldDelegate,
-                                                   ERAutocompleteTableDataSourceDelegate>
+                                                   GMSAutocompleteTableDataSourceDelegate>
 @end
 
 @implementation AutocompleteWithTextFieldController {
   UITextField *_searchField;
   UITableViewController *_resultsController;
-  ERAutocompleteTableDataSource *_tableDataSource;
+  GMSAutocompleteTableDataSource *_tableDataSource;
 }
 
 + (NSString *)demoTitle {
@@ -58,7 +58,7 @@
   _searchField.delegate = self;
 
   // Setup the results view controller.
-  _tableDataSource = [[ERAutocompleteTableDataSource alloc] init];
+  _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
   _tableDataSource.delegate = self;
   _resultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
   _resultsController.tableView.delegate = _tableDataSource;
@@ -85,16 +85,16 @@
   [self addResultViewBelow:_searchField];
 }
 
-#pragma mark - ERAutocompleteTableDataSourceDelegate
+#pragma mark - GMSAutocompleteTableDataSourceDelegate
 
-- (void)tableDataSource:(ERAutocompleteTableDataSource *)tableDataSource
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
+    didAutocompleteWithPlace:(GMSPlace *)place {
   [_searchField resignFirstResponder];
   [self autocompleteDidSelectPlace:place];
   _searchField.text = place.name;
 }
 
-- (void)tableDataSource:(ERAutocompleteTableDataSource *)tableDataSource
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource
     didFailAutocompleteWithError:(NSError *)error {
   [_searchField resignFirstResponder];
   [self autocompleteDidFail:error];
@@ -102,13 +102,13 @@
 }
 
 - (void)didRequestAutocompletePredictionsForTableDataSource:
-    (ERAutocompleteTableDataSource *)tableDataSource {
+    (GMSAutocompleteTableDataSource *)tableDataSource {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
   [_resultsController.tableView reloadData];
 }
 
 - (void)didUpdateAutocompletePredictionsForTableDataSource:
-    (ERAutocompleteTableDataSource *)tableDataSource {
+    (GMSAutocompleteTableDataSource *)tableDataSource {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
   [_resultsController.tableView reloadData];
 }

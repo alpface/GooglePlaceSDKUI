@@ -18,12 +18,12 @@
 
 #import <GooglePlaces/GooglePlaces.h>
 
-@interface AutocompleteWithSearchViewController () <ERAutocompleteResultsViewControllerDelegate>
+@interface AutocompleteWithSearchViewController () <GMSAutocompleteResultsViewControllerDelegate>
 @end
 
 @implementation AutocompleteWithSearchViewController {
   UISearchController *_searchController;
-  ERAutocompleteResultsViewController *_acViewController;
+  GMSAutocompleteResultsViewController *_acViewController;
 }
 
 + (NSString *)demoTitle {
@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  _acViewController = [[ERAutocompleteResultsViewController alloc] init];
+  _acViewController = [[GMSAutocompleteResultsViewController alloc] init];
   _acViewController.delegate = self;
 
   _searchController =
@@ -67,16 +67,16 @@
   [self addResultViewBelow:nil];
 }
 
-#pragma mark - ERAutocompleteResultsViewControllerDelegate
+#pragma mark - GMSAutocompleteResultsViewControllerDelegate
 
-- (void)resultsController:(ERAutocompleteResultsViewController *)resultsController
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
+    didAutocompleteWithPlace:(GMSPlace *)place {
   // Display the results and dismiss the search controller.
   [_searchController setActive:NO];
   [self autocompleteDidSelectPlace:place];
 }
 
-- (void)resultsController:(ERAutocompleteResultsViewController *)resultsController
+- (void)resultsController:(GMSAutocompleteResultsViewController *)resultsController
     didFailAutocompleteWithError:(NSError *)error {
   // Display the error and dismiss the search controller.
   [_searchController setActive:NO];
@@ -86,12 +86,12 @@
 // Show and hide the network activity indicator when we start/stop loading results.
 
 - (void)didRequestAutocompletePredictionsForResultsController:
-    (ERAutocompleteResultsViewController *)resultsController {
+    (GMSAutocompleteResultsViewController *)resultsController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)didUpdateAutocompletePredictionsForResultsController:
-    (ERAutocompleteResultsViewController *)resultsController {
+    (GMSAutocompleteResultsViewController *)resultsController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

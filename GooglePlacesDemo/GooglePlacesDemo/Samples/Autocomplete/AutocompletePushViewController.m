@@ -17,8 +17,8 @@
 
 #import <GooglePlaces/GooglePlaces.h>
 
-@interface AutocompletePushViewController () <ERAutocompleteViewControllerDelegate>
-@property(nonatomic, strong) ERAutocompleteViewController *autocompleteViewController;
+@interface AutocompletePushViewController () <GMSAutocompleteViewControllerDelegate>
+@property(nonatomic, strong) GMSAutocompleteViewController *autocompleteViewController;
 @end
 
 @implementation AutocompletePushViewController
@@ -42,9 +42,9 @@
 
 #pragma mark - Getters/Setters
 
-- (ERAutocompleteViewController *)autocompleteViewController {
+- (GMSAutocompleteViewController *)autocompleteViewController {
   if (_autocompleteViewController == nil) {
-    _autocompleteViewController = [[ERAutocompleteViewController alloc] init];
+    _autocompleteViewController = [[GMSAutocompleteViewController alloc] init];
     _autocompleteViewController.delegate = self;
   }
   return _autocompleteViewController;
@@ -57,33 +57,33 @@
   [self.navigationController pushViewController:self.autocompleteViewController animated:YES];
 }
 
-#pragma mark - ERAutocompleteViewControllerDelegate
+#pragma mark - GMSAutocompleteViewControllerDelegate
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+    didAutocompleteWithPlace:(GMSPlace *)place {
   // Dismiss the view controller and tell our superclass to populate the result view.
   [self.navigationController popToViewController:self animated:YES];
   [self autocompleteDidSelectPlace:place];
 }
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
+- (void)viewController:(GMSAutocompleteViewController *)viewController
     didFailAutocompleteWithError:(NSError *)error {
   // Dismiss the view controller and notify our superclass of the failure.
   [self.navigationController popToViewController:self animated:YES];
   [self autocompleteDidFail:error];
 }
 
-- (void)wasCancelled:(ERAutocompleteViewController *)viewController {
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
   // Dismiss the controller and show a message that it was canceled.
   [self.navigationController popToViewController:self animated:YES];
   [self autocompleteDidCancel];
 }
 
-- (void)didRequestAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
-- (void)didUpdateAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

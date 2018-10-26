@@ -17,7 +17,7 @@
 #import "AutocompleteModalViewController.h"
 #import <GooglePlaces/GooglePlaces.h>
 
-@interface AutocompleteModalViewController () <ERAutocompleteViewControllerDelegate>
+@interface AutocompleteModalViewController () <GMSAutocompleteViewControllerDelegate>
 @end
 
 @implementation AutocompleteModalViewController
@@ -43,39 +43,39 @@
 
 - (IBAction)showAutocompleteWidgetButtonTapped {
   // When the button is pressed modally present the autocomplete view controller.
-  ERAutocompleteViewController *autocompleteViewController =
-      [[ERAutocompleteViewController alloc] init];
+  GMSAutocompleteViewController *autocompleteViewController =
+      [[GMSAutocompleteViewController alloc] init];
   autocompleteViewController.delegate = self;
   [self presentViewController:autocompleteViewController animated:YES completion:nil];
 }
 
-#pragma mark - ERAutocompleteViewControllerDelegate
+#pragma mark - GMSAutocompleteViewControllerDelegate
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+    didAutocompleteWithPlace:(GMSPlace *)place {
   // Dismiss the view controller and tell our superclass to populate the result view.
   [viewController dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidSelectPlace:place];
 }
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
+- (void)viewController:(GMSAutocompleteViewController *)viewController
     didFailAutocompleteWithError:(NSError *)error {
   // Dismiss the view controller and notify our superclass of the failure.
   [viewController dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidFail:error];
 }
 
-- (void)wasCancelled:(ERAutocompleteViewController *)viewController {
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
   // Dismiss the controller and show a message that it was canceled.
   [viewController dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidCancel];
 }
 
-- (void)didRequestAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
-- (void)didUpdateAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

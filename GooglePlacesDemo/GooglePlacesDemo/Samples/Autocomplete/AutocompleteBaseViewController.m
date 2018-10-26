@@ -106,7 +106,7 @@
   }
 }
 
-- (void)autocompleteDidSelectPlace:(ERPlace *)place {
+- (void)autocompleteDidSelectPlace:(GMSPlace *)place {
   NSMutableAttributedString *text =
       [[NSMutableAttributedString alloc] initWithString:[place description]];
   if (place.attributions) {

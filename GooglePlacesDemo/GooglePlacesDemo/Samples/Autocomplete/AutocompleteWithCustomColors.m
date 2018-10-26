@@ -18,10 +18,10 @@
 #import <GooglePlaces/GooglePlaces.h>
 
 /**
- * Simple subclass of ERAutocompleteViewController solely for the purpose of localising appearance
+ * Simple subclass of GMSAutocompleteViewController solely for the purpose of localising appearance
  * proxy changes to this part of the demo app.
  */
-@interface ERStyledAutocompleteViewController : ERAutocompleteViewController
+@interface ERStyledAutocompleteViewController : GMSAutocompleteViewController
 @end
 
 @implementation ERStyledAutocompleteViewController
@@ -59,7 +59,7 @@
 
 @end
 
-@interface AutocompleteWithCustomColors () <ERAutocompleteViewControllerDelegate>
+@interface AutocompleteWithCustomColors () <GMSAutocompleteViewControllerDelegate>
 @end
 
 @implementation AutocompleteWithCustomColors
@@ -306,7 +306,7 @@
                                       searchBarTintColor:(UIColor *)searchBarTintColor
                                           separatorColor:(UIColor *)separatorColor {
   // Use UIAppearance proxies to change the appearance of UI controls in
-  // ERAutocompleteViewController. Here we use appearanceWhenContainedIn to localise changes to
+  // GMSAutocompleteViewController. Here we use appearanceWhenContainedIn to localise changes to
   // just this part of the Demo app. This will generally not be necessary in a real application as
   // you will probably want the same theme to apply to all elements in your app.
   UIActivityIndicatorView *appearence = [UIActivityIndicatorView
@@ -352,7 +352,7 @@
   // icons displayed in the search bar to something other than the default. The
   // setupSearchBarCustomIcons method contains example code to do this.
 
-  ERAutocompleteViewController *acController = [[ERStyledAutocompleteViewController alloc] init];
+  GMSAutocompleteViewController *acController = [[ERStyledAutocompleteViewController alloc] init];
   acController.delegate = self;
   acController.tableCellBackgroundColor = backgroundColor;
   acController.tableCellSeparatorColor = separatorColor;
@@ -382,30 +382,30 @@
                                state:UIControlStateNormal];
 }
 
-#pragma mark - ERAutocompleteViewControllerDelegate
+#pragma mark - GMSAutocompleteViewControllerDelegate
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
-    didAutocompleteWithPlace:(ERPlace *)place {
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+    didAutocompleteWithPlace:(GMSPlace *)place {
   [self dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidSelectPlace:place];
 }
 
-- (void)viewController:(ERAutocompleteViewController *)viewController
+- (void)viewController:(GMSAutocompleteViewController *)viewController
     didFailAutocompleteWithError:(NSError *)error {
   [self dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidFail:error];
 }
 
-- (void)wasCancelled:(ERAutocompleteViewController *)viewController {
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
   [self dismissViewControllerAnimated:YES completion:nil];
   [self autocompleteDidCancel];
 }
 
-- (void)didRequestAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
-- (void)didUpdateAutocompletePredictions:(ERAutocompleteViewController *)viewController {
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 

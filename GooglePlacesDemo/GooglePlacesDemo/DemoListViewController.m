@@ -23,7 +23,7 @@ static NSString *const kCellIdentifier = @"DemoCellIdentifier";
         NSLocalizedString(@"App.NameAndVersion",
                           @"The name of the app to display in a navigation bar along with a "
                           @"placeholder for the SDK version number");
-    self.title = [NSString stringWithFormat:titleFormat, [ERPlacesClient SDKVersion]];
+    self.title = [NSString stringWithFormat:titleFormat, [GMSPlacesClient SDKVersion]];
   }
   return self;
 }

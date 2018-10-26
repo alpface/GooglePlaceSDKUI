@@ -42,7 +42,7 @@
  */
 - (void)addResultViewBelow:(UIView *)view;
 
-- (void)autocompleteDidSelectPlace:(ERPlace *)place;
+- (void)autocompleteDidSelectPlace:(GMSPlace *)place;
 - (void)autocompleteDidFail:(NSError *)error;
 - (void)autocompleteDidCancel;
 - (void)showCustomMessageInResultPane:(NSString *)message;

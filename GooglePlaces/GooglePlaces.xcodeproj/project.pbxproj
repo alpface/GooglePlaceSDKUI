@@ -7,50 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D09493B821832A0A00A386D5 /* GMSPlaceLikelihoodList.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938C21832A0500A386D5 /* GMSPlaceLikelihoodList.h */; };
-		D09493B921832A0A00A386D5 /* GMSPlacePhotoMetadataList.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938D21832A0500A386D5 /* GMSPlacePhotoMetadataList.h */; };
+		D09493B821832A0A00A386D5 /* GMSPlaceLikelihoodList.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938C21832A0500A386D5 /* GMSPlaceLikelihoodList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493B921832A0A00A386D5 /* GMSPlacePhotoMetadataList.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938D21832A0500A386D5 /* GMSPlacePhotoMetadataList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493BA21832A0A00A386D5 /* GMSAutocompleteFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D094938E21832A0500A386D5 /* GMSAutocompleteFetcher.m */; };
-		D09493BB21832A0A00A386D5 /* GMSAutocompleteFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938F21832A0500A386D5 /* GMSAutocompleteFilter.h */; };
-		D09493BC21832A0A00A386D5 /* GMSAttributionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939021832A0600A386D5 /* GMSAttributionTableViewCell.h */; };
+		D09493BB21832A0A00A386D5 /* GMSAutocompleteFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = D094938F21832A0500A386D5 /* GMSAutocompleteFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493BC21832A0A00A386D5 /* GMSAttributionTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939021832A0600A386D5 /* GMSAttributionTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D09493BD21832A0A00A386D5 /* GMSAttributionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939121832A0600A386D5 /* GMSAttributionTableViewCell.m */; };
-		D09493BE21832A0A00A386D5 /* GMSPlacePhotoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939221832A0600A386D5 /* GMSPlacePhotoMetadata.h */; };
+		D09493BE21832A0A00A386D5 /* GMSPlacePhotoMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939221832A0600A386D5 /* GMSPlacePhotoMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493BF21832A0A00A386D5 /* UIScrollView+NoDataExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939321832A0600A386D5 /* UIScrollView+NoDataExtend.m */; };
 		D09493C021832A0A00A386D5 /* GMSAutocompleteTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939421832A0600A386D5 /* GMSAutocompleteTableDataSource.m */; };
-		D09493C121832A0A00A386D5 /* GMSAutocompleteTableDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939521832A0600A386D5 /* GMSAutocompleteTableDataSource.h */; };
+		D09493C121832A0A00A386D5 /* GMSAutocompleteTableDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939521832A0600A386D5 /* GMSAutocompleteTableDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493C221832A0A00A386D5 /* GMSPlacesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939621832A0600A386D5 /* GMSPlacesClient.m */; };
 		D09493C321832A0A00A386D5 /* GMSAutocompleteMatchFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939721832A0600A386D5 /* GMSAutocompleteMatchFragment.m */; };
-		D09493C421832A0A00A386D5 /* GMSAutocompleteResultsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939821832A0600A386D5 /* GMSAutocompleteResultsViewController.h */; };
+		D09493C421832A0A00A386D5 /* GMSAutocompleteResultsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939821832A0600A386D5 /* GMSAutocompleteResultsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493C521832A0A00A386D5 /* GMSPlaceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939921832A0600A386D5 /* GMSPlaceTypes.m */; };
 		D09493C621832A0A00A386D5 /* GMSAutocompletePrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939A21832A0600A386D5 /* GMSAutocompletePrediction.m */; };
 		D09493C721832A0A00A386D5 /* GMSAutocompleteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D094939B21832A0600A386D5 /* GMSAutocompleteFilter.m */; };
-		D09493C821832A0A00A386D5 /* GMSPlacesClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939C21832A0600A386D5 /* GMSPlacesClient.h */; };
-		D09493C921832A0A00A386D5 /* GooglePlaces.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939D21832A0700A386D5 /* GooglePlaces.h */; };
-		D09493CA21832A0A00A386D5 /* GMSAutocompleteBoundsMode.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939E21832A0700A386D5 /* GMSAutocompleteBoundsMode.h */; };
-		D09493CB21832A0A00A386D5 /* GMSPlaceLikelihood.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939F21832A0700A386D5 /* GMSPlaceLikelihood.h */; };
+		D09493C821832A0A00A386D5 /* GMSPlacesClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939C21832A0600A386D5 /* GMSPlacesClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493C921832A0A00A386D5 /* GooglePlaces.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939D21832A0700A386D5 /* GooglePlaces.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493CA21832A0A00A386D5 /* GMSAutocompleteBoundsMode.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939E21832A0700A386D5 /* GMSAutocompleteBoundsMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493CB21832A0A00A386D5 /* GMSPlaceLikelihood.h in Headers */ = {isa = PBXBuildFile; fileRef = D094939F21832A0700A386D5 /* GMSPlaceLikelihood.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493CC21832A0A00A386D5 /* GMSPlacesResources.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493A021832A0700A386D5 /* GMSPlacesResources.m */; };
-		D09493CD21832A0A00A386D5 /* GMSPlacesResources.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A121832A0700A386D5 /* GMSPlacesResources.h */; };
+		D09493CD21832A0A00A386D5 /* GMSPlacesResources.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A121832A0700A386D5 /* GMSPlacesResources.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D09493CE21832A0A00A386D5 /* GMSAddressComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493A221832A0700A386D5 /* GMSAddressComponent.m */; };
-		D09493CF21832A0A00A386D5 /* GMSAutocompleteResultsTableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A321832A0700A386D5 /* GMSAutocompleteResultsTableViewDelegate.h */; };
-		D09493D021832A0A00A386D5 /* GMSAddressComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A421832A0700A386D5 /* GMSAddressComponent.h */; };
+		D09493CF21832A0A00A386D5 /* GMSAutocompleteResultsTableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A321832A0700A386D5 /* GMSAutocompleteResultsTableViewDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09493D021832A0A00A386D5 /* GMSAddressComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A421832A0700A386D5 /* GMSAddressComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493D121832A0A00A386D5 /* GMSAutocompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493A521832A0800A386D5 /* GMSAutocompleteViewController.m */; };
 		D09493D221832A0A00A386D5 /* GMSPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493A621832A0800A386D5 /* GMSPlace.m */; };
-		D09493D321832A0A00A386D5 /* GMSPlacesErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A721832A0800A386D5 /* GMSPlacesErrors.h */; };
+		D09493D321832A0A00A386D5 /* GMSPlacesErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A721832A0800A386D5 /* GMSPlacesErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493D421832A0A00A386D5 /* GMSAutocompleteContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493A821832A0800A386D5 /* GMSAutocompleteContentViewController.m */; };
-		D09493D521832A0A00A386D5 /* UIScrollView+NoDataExtend.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A921832A0800A386D5 /* UIScrollView+NoDataExtend.h */; };
-		D09493D621832A0A00A386D5 /* GMSAutocompleteViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AA21832A0800A386D5 /* GMSAutocompleteViewController.h */; };
+		D09493D521832A0A00A386D5 /* UIScrollView+NoDataExtend.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493A921832A0800A386D5 /* UIScrollView+NoDataExtend.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09493D621832A0A00A386D5 /* GMSAutocompleteViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AA21832A0800A386D5 /* GMSAutocompleteViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493D721832A0A00A386D5 /* GMSPlaceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493AB21832A0800A386D5 /* GMSPlaceTableViewCell.m */; };
-		D09493D821832A0A00A386D5 /* GMSPlaceTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AC21832A0800A386D5 /* GMSPlaceTypes.h */; };
+		D09493D821832A0A00A386D5 /* GMSPlaceTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AC21832A0800A386D5 /* GMSPlaceTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493D921832A0A00A386D5 /* GMSAutocompleteResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493AD21832A0900A386D5 /* GMSAutocompleteResultsViewController.m */; };
-		D09493DA21832A0A00A386D5 /* GMSAutocompletePrediction.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AE21832A0900A386D5 /* GMSAutocompletePrediction.h */; };
+		D09493DA21832A0A00A386D5 /* GMSAutocompletePrediction.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493AE21832A0900A386D5 /* GMSAutocompletePrediction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493DB21832A0A00A386D5 /* GMSPlaceLikelihoodList.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493AF21832A0900A386D5 /* GMSPlaceLikelihoodList.m */; };
-		D09493DC21832A0A00A386D5 /* GMSAutocompleteFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B021832A0900A386D5 /* GMSAutocompleteFetcher.h */; };
+		D09493DC21832A0A00A386D5 /* GMSAutocompleteFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B021832A0900A386D5 /* GMSAutocompleteFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09493DD21832A0A00A386D5 /* GMSPlacePhotoMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493B121832A0900A386D5 /* GMSPlacePhotoMetadata.m */; };
 		D09493DE21832A0A00A386D5 /* GMSPlacePhotoMetadataList.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493B221832A0900A386D5 /* GMSPlacePhotoMetadataList.m */; };
 		D09493DF21832A0A00A386D5 /* GMSPlaceLikelihood.m in Sources */ = {isa = PBXBuildFile; fileRef = D09493B321832A0A00A386D5 /* GMSPlaceLikelihood.m */; };
-		D09493E021832A0A00A386D5 /* GMSAutocompleteMatchFragment.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B421832A0A00A386D5 /* GMSAutocompleteMatchFragment.h */; };
-		D09493E121832A0A00A386D5 /* GMSAutocompleteContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B521832A0A00A386D5 /* GMSAutocompleteContentViewController.h */; };
-		D09493E221832A0A00A386D5 /* GMSPlaceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B621832A0A00A386D5 /* GMSPlaceTableViewCell.h */; };
-		D09493E321832A0A00A386D5 /* GMSPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B721832A0A00A386D5 /* GMSPlace.h */; };
+		D09493E021832A0A00A386D5 /* GMSAutocompleteMatchFragment.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B421832A0A00A386D5 /* GMSAutocompleteMatchFragment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D09493E121832A0A00A386D5 /* GMSAutocompleteContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B521832A0A00A386D5 /* GMSAutocompleteContentViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09493E221832A0A00A386D5 /* GMSPlaceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B621832A0A00A386D5 /* GMSPlaceTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D09493E321832A0A00A386D5 /* GMSPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B721832A0A00A386D5 /* GMSPlace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,30 +188,30 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09493E221832A0A00A386D5 /* GMSPlaceTableViewCell.h in Headers */,
-				D09493CD21832A0A00A386D5 /* GMSPlacesResources.h in Headers */,
-				D09493CA21832A0A00A386D5 /* GMSAutocompleteBoundsMode.h in Headers */,
-				D09493C421832A0A00A386D5 /* GMSAutocompleteResultsViewController.h in Headers */,
-				D09493D521832A0A00A386D5 /* UIScrollView+NoDataExtend.h in Headers */,
+				D09493C921832A0A00A386D5 /* GooglePlaces.h in Headers */,
 				D09493D821832A0A00A386D5 /* GMSPlaceTypes.h in Headers */,
+				D09493D321832A0A00A386D5 /* GMSPlacesErrors.h in Headers */,
+				D09493D021832A0A00A386D5 /* GMSAddressComponent.h in Headers */,
+				D09493B821832A0A00A386D5 /* GMSPlaceLikelihoodList.h in Headers */,
+				D09493DA21832A0A00A386D5 /* GMSAutocompletePrediction.h in Headers */,
+				D09493C821832A0A00A386D5 /* GMSPlacesClient.h in Headers */,
+				D09493DC21832A0A00A386D5 /* GMSAutocompleteFetcher.h in Headers */,
 				D09493BB21832A0A00A386D5 /* GMSAutocompleteFilter.h in Headers */,
+				D09493CB21832A0A00A386D5 /* GMSPlaceLikelihood.h in Headers */,
+				D09493BE21832A0A00A386D5 /* GMSPlacePhotoMetadata.h in Headers */,
+				D09493E021832A0A00A386D5 /* GMSAutocompleteMatchFragment.h in Headers */,
+				D09493CA21832A0A00A386D5 /* GMSAutocompleteBoundsMode.h in Headers */,
+				D09493E321832A0A00A386D5 /* GMSPlace.h in Headers */,
+				D09493D621832A0A00A386D5 /* GMSAutocompleteViewController.h in Headers */,
+				D09493C121832A0A00A386D5 /* GMSAutocompleteTableDataSource.h in Headers */,
+				D09493C421832A0A00A386D5 /* GMSAutocompleteResultsViewController.h in Headers */,
+				D09493B921832A0A00A386D5 /* GMSPlacePhotoMetadataList.h in Headers */,
+				D09493E221832A0A00A386D5 /* GMSPlaceTableViewCell.h in Headers */,
 				D09493CF21832A0A00A386D5 /* GMSAutocompleteResultsTableViewDelegate.h in Headers */,
 				D09493E121832A0A00A386D5 /* GMSAutocompleteContentViewController.h in Headers */,
-				D09493DA21832A0A00A386D5 /* GMSAutocompletePrediction.h in Headers */,
-				D09493DC21832A0A00A386D5 /* GMSAutocompleteFetcher.h in Headers */,
-				D09493D621832A0A00A386D5 /* GMSAutocompleteViewController.h in Headers */,
-				D09493CB21832A0A00A386D5 /* GMSPlaceLikelihood.h in Headers */,
-				D09493B921832A0A00A386D5 /* GMSPlacePhotoMetadataList.h in Headers */,
-				D09493D321832A0A00A386D5 /* GMSPlacesErrors.h in Headers */,
-				D09493E021832A0A00A386D5 /* GMSAutocompleteMatchFragment.h in Headers */,
-				D09493C921832A0A00A386D5 /* GooglePlaces.h in Headers */,
-				D09493C121832A0A00A386D5 /* GMSAutocompleteTableDataSource.h in Headers */,
-				D09493BE21832A0A00A386D5 /* GMSPlacePhotoMetadata.h in Headers */,
-				D09493C821832A0A00A386D5 /* GMSPlacesClient.h in Headers */,
-				D09493E321832A0A00A386D5 /* GMSPlace.h in Headers */,
-				D09493D021832A0A00A386D5 /* GMSAddressComponent.h in Headers */,
+				D09493D521832A0A00A386D5 /* UIScrollView+NoDataExtend.h in Headers */,
 				D09493BC21832A0A00A386D5 /* GMSAttributionTableViewCell.h in Headers */,
-				D09493B821832A0A00A386D5 /* GMSPlaceLikelihoodList.h in Headers */,
+				D09493CD21832A0A00A386D5 /* GMSPlacesResources.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
