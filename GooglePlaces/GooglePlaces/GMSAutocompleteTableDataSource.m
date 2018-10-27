@@ -96,6 +96,7 @@
     _predictions = [NSMutableArray array];
     _defaultTableCellBackgroundColor =[UIColor colorWithWhite:0x3f733333 alpha:0x3f800000];
     _defaultTableCellSeparatorColor = [UIColor colorWithWhite:0x0 alpha:0x3e4ccccd];
+    _defaultPrimaryTextColor = [UIColor redColor];
     _defaultPrimaryTextHighlightColor = [_defaultPrimaryTextColor colorWithAlphaComponent:0x3f0a3d71];
     _defaultSecondaryTextColor = _defaultPrimaryTextColor;
     
