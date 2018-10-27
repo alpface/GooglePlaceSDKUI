@@ -25,7 +25,22 @@
 		D099AFD121832B31009A0464 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D099AFC221832B31009A0464 /* DemoListViewController.m */; };
 		D099AFD621832CDC009A0464 /* GMSPlacesResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D099AFD521832CDC009A0464 /* GMSPlacesResources.bundle */; };
 		D099AFE62183307D009A0464 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099AFE52183307D009A0464 /* GooglePlaces.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D2398E7321841AC0000EED32 /* GooglePlaces.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D099AFE52183307D009A0464 /* GooglePlaces.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D2398E7421841AC1000EED32 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D2398E7321841AC0000EED32 /* GooglePlaces.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D094935E2183295600A386D5 /* GooglePlacesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GooglePlacesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +197,7 @@
 				D094935A2183295600A386D5 /* Sources */,
 				D094935B2183295600A386D5 /* Frameworks */,
 				D094935C2183295600A386D5 /* Resources */,
+				D2398E7421841AC1000EED32 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
