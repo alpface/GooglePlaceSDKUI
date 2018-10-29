@@ -13,6 +13,7 @@
 #import "GMSPlaceTableViewCell.h"
 #import "GMSAttributionTableViewCell.h"
 #import "UIScrollView+NoDataExtend.h"
+#import "GMSPlacesResources.h"
 
 @class GMSCoordinateBounds;
 
@@ -73,30 +74,34 @@
 @property (nonatomic, weak) UITableView *tableView;
 /// 搜索不到结果时为YES
 @property (nonatomic, assign, readonly) BOOL isUnresolvedPlace;
-- (instancetype)initWithRequestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(UITableView *)tableView requestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin NS_DESIGNATED_INITIALIZER;
 @end
 
 @implementation GMSAutocompleteTableDataSource
-- (instancetype)init
+- (instancetype)init {
+    @throw nil;
+}
+
+- (instancetype)initWithTableView:(UITableView *)tableView
 {
     if (self = [super init]) {
-        [self configureWithRequestSource:kGTLRPlaces_RequestHeaderContext_Source_ProgrammaticApi clearcutRequestOrigin:0x0];
+        [self configureWithTableView:tableView requestSource:kGTLRPlaces_RequestHeaderContext_Source_ProgrammaticApi clearcutRequestOrigin:0x0];
     }
     return self;
 }
-- (instancetype)initWithRequestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin {
+- (instancetype)initWithTableView:(UITableView *)tableView requestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin {
     if (self = [super init]) {
-        [self configureWithRequestSource:requestSource clearcutRequestOrigin:clearcutRequestOrigin];
+        [self configureWithTableView:tableView requestSource:requestSource clearcutRequestOrigin:clearcutRequestOrigin];
     }
     return self;
 }
 
-- (void)configureWithRequestSource:(NSString *)requestSource clearcutRequestOrigin:(BOOL)clearcutRequestOrigin
+- (void)configureWithTableView:(UITableView *)tableView requestSource:(NSString *)requestSource clearcutRequestOrigin:(BOOL)clearcutRequestOrigin
 {
     _predictions = [NSMutableArray array];
     _defaultTableCellBackgroundColor =[UIColor colorWithWhite:0x3f733333 alpha:0x3f800000];
     _defaultTableCellSeparatorColor = [UIColor colorWithWhite:0x0 alpha:0x3e4ccccd];
-    _defaultPrimaryTextColor = [UIColor redColor];
+    _defaultPrimaryTextColor = [UIColor lightGrayColor];
     _defaultPrimaryTextHighlightColor = [_defaultPrimaryTextColor colorWithAlphaComponent:0x3f0a3d71];
     _defaultSecondaryTextColor = _defaultPrimaryTextColor;
     
@@ -105,11 +110,33 @@
     self->_isFetchingPlaceDetails = 0x0;
     self->_shouldCenterFullScreenCells = 0x0;
     _sourceText = @"";
-//    _sessionStats = [[GMSx_PCCPlacesAutocompleteWidgetSessionProto alloc] init];
-//    [_sessionStats setCustomStylesApplied:0x2];
-//    [_sessionStats setOrigin:0x2];
+    //    _sessionStats = [[GMSx_PCCPlacesAutocompleteWidgetSessionProto alloc] init];
+    //    [_sessionStats setCustomStylesApplied:0x2];
+    //    [_sessionStats setOrigin:0x2];
+    NSParameterAssert(tableView);
+    _tableView = tableView;
+    /// 设置空数据
+    tableView.noDataPlaceholderDelegate = self;
+    __weak typeof(self) weakSelf = self;
+    tableView.noDataReloadButtonBlock = ^(UIButton * _Nonnull reloadButton) {
+        reloadButton.backgroundColor = [UIColor clearColor];
+        [reloadButton.layer setMasksToBounds:YES];
+        reloadButton.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
+        reloadButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+        [reloadButton setAttributedTitle:[weakSelf attributedStringWithText:@"无法识别该地点" color:[UIColor lightGrayColor] fontSize:13.0] forState:UIControlStateNormal];
+        [reloadButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    };
+    tableView.noDataImageViewBlock = ^(UIImageView * _Nonnull imageView) {
+        if (weakSelf.isUnresolvedPlace) {
+            imageView.image = [GMSPlacesResources bundleImageNamed:@"sad_cloud_dark"];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+        }
+        else {
+            imageView.image = nil;
+        }
+    };
+    
 }
-
 - (void)sourceTextHasChanged:(NSString *)text
 {
     if ([text isEqualToString:_sourceText] == 0x0) {
@@ -506,5 +533,29 @@
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////
+#pragma mark - Others
+////////////////////////////////////////////////////////////////////////
+
+- (NSAttributedString *)attributedStringWithText:(NSString *)string color:(UIColor *)color fontSize:(CGFloat)fontSize {
+    NSString *text = string;
+    UIFont *font = [UIFont systemFontOfSize:fontSize];
+    UIColor *textColor = color;
+    
+    NSMutableDictionary *attributeDict = [NSMutableDictionary new];
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    style.lineBreakMode = NSLineBreakByWordWrapping;
+    style.alignment = NSTextAlignmentCenter;
+    style.lineSpacing = 4.0;
+    [attributeDict setObject:font forKey:NSFontAttributeName];
+    [attributeDict setObject:textColor forKey:NSForegroundColorAttributeName];
+    [attributeDict setObject:style forKey:NSParagraphStyleAttributeName];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributeDict];
+    
+    return attributedString;
+    
+}
 
 @end

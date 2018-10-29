@@ -36,53 +36,55 @@
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  self.view.backgroundColor = [UIColor whiteColor];
-
-  // Configure the text field to our linking.
-  _searchField = [[UITextField alloc] initWithFrame:CGRectZero];
-  _searchField.translatesAutoresizingMaskIntoConstraints = NO;
-  _searchField.borderStyle = UITextBorderStyleNone;
-  _searchField.backgroundColor = [UIColor whiteColor];
-  _searchField.placeholder = NSLocalizedString(@"Demo.Content.Autocomplete.EnterTextPrompt",
-                                               @"Prompt to enter text for autocomplete demo");
-  _searchField.autocorrectionType = UITextAutocorrectionTypeNo;
-  _searchField.keyboardType = UIKeyboardTypeDefault;
-  _searchField.returnKeyType = UIReturnKeyDone;
-  _searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
-  _searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-
-  [_searchField addTarget:self
-                   action:@selector(textFieldDidChange:)
-         forControlEvents:UIControlEventEditingChanged];
-  _searchField.delegate = self;
-
-  // Setup the results view controller.
-  _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
-  _tableDataSource.delegate = self;
-  _resultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-  _resultsController.tableView.delegate = _tableDataSource;
-  _resultsController.tableView.dataSource = _tableDataSource;
-
-  [self.view addSubview:_searchField];
-  // Use auto layout to place the text field, as we need to take the top layout guide into
-  // consideration.
-  [self.view
-      addConstraints:[NSLayoutConstraint
-                         constraintsWithVisualFormat:@"H:|-[_searchField]-|"
-                                             options:0
-                                             metrics:nil
-                                               views:NSDictionaryOfVariableBindings(_searchField)]];
-  [NSLayoutConstraint constraintWithItem:_searchField
-                               attribute:NSLayoutAttributeTop
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:self.topLayoutGuide
-                               attribute:NSLayoutAttributeBottom
-                              multiplier:1
-                                constant:8]
-      .active = YES;
-
-  [self addResultViewBelow:_searchField];
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    // Configure the text field to our linking.
+    _searchField = [[UITextField alloc] initWithFrame:CGRectZero];
+    _searchField.translatesAutoresizingMaskIntoConstraints = NO;
+    _searchField.borderStyle = UITextBorderStyleNone;
+    _searchField.backgroundColor = [UIColor whiteColor];
+    _searchField.placeholder = NSLocalizedString(@"Demo.Content.Autocomplete.EnterTextPrompt",
+                                                 @"Prompt to enter text for autocomplete demo");
+    _searchField.autocorrectionType = UITextAutocorrectionTypeNo;
+    _searchField.keyboardType = UIKeyboardTypeDefault;
+    _searchField.returnKeyType = UIReturnKeyDone;
+    _searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
+    [_searchField addTarget:self
+                     action:@selector(textFieldDidChange:)
+           forControlEvents:UIControlEventEditingChanged];
+    _searchField.delegate = self;
+    
+    
+    _resultsController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    // Setup the results view controller.
+    _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithTableView:_resultsController.tableView];
+    _tableDataSource.delegate = self;
+    _resultsController.tableView.delegate = _tableDataSource;
+    _resultsController.tableView.dataSource = _tableDataSource;
+    
+    [self.view addSubview:_searchField];
+    // Use auto layout to place the text field, as we need to take the top layout guide into
+    // consideration.
+    [self.view
+     addConstraints:[NSLayoutConstraint
+                     constraintsWithVisualFormat:@"H:|-[_searchField]-|"
+                     options:0
+                     metrics:nil
+                     views:NSDictionaryOfVariableBindings(_searchField)]];
+    [NSLayoutConstraint constraintWithItem:_searchField
+                                 attribute:NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.topLayoutGuide
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1
+                                  constant:8]
+    .active = YES;
+    
+    [self addResultViewBelow:_searchField];
 }
 
 #pragma mark - GMSAutocompleteTableDataSourceDelegate

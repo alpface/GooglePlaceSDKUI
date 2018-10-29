@@ -203,7 +203,8 @@ didFailAutocompleteWithError:(NSError *)error;
  *
  * 中文: 指定的初始化程序
  */
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_UNAVAILABLE;
 
 /**
  * EN: Notify the data source that the source text to autocomplete has changed.

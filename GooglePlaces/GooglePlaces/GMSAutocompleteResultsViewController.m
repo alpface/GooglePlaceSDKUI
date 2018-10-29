@@ -8,7 +8,6 @@
 
 #import "GMSAutocompleteResultsViewController.h"
 #import "GMSAutocompleteTableDataSource.h"
-#import "UIScrollView+NoDataExtend.h"
 #import "GMSPlacesResources.h"
 
 @interface GMSAutocompleteTableDataSource ()
@@ -17,7 +16,7 @@
 @property(nonatomic) BOOL quotaFailure;
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, assign, readonly) BOOL isUnresolvedPlace;
-- (instancetype)initWithRequestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin;
+- (instancetype)initWithTableView:(UITableView *)tableView requestSource:(NSString *)requestSource clearcutRequestOrigin:(int)clearcutRequestOrigin;
 - (void)resetSessionStats;
 @end
 
@@ -30,6 +29,7 @@
     GMSPlacesClient *_placesClient;
     NSString *_widgetCallRequestSource;
     int _clearcutRequestOrigin;
+    NSString *_requestSource;
 }
 
 @property(retain, nonatomic) GMSAutocompleteTableDataSource *tableDataSource;
@@ -44,8 +44,7 @@
     if (self = [super init]) {
         _widgetCallRequestSource = widgetCallRequestSource;
         _clearcutRequestOrigin = clearcutRequestOrigin;
-        _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithRequestSource:requestSource clearcutRequestOrigin:clearcutRequestOrigin];
-        _tableDataSource.delegate = self;
+        _requestSource = requestSource;
     }
     return self;
 }
@@ -72,26 +71,8 @@
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_tableViewController]|" options:kNilOptions metrics:nil views:@{@"_tableViewController": _tableViewController.view}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableViewController]|" options:kNilOptions metrics:nil views:@{@"_tableViewController": _tableViewController.view}]];
     
-    _tableViewController.tableView.noDataPlaceholderDelegate = (id<NoDataPlaceholderDelegate>)_tableDataSource;
-    __weak typeof(self) weakSelf = self;
-    _tableViewController.tableView.noDataReloadButtonBlock = ^(UIButton * _Nonnull reloadButton) {
-        reloadButton.backgroundColor = [UIColor clearColor];
-        [reloadButton.layer setMasksToBounds:YES];
-        reloadButton.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
-        reloadButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-        [reloadButton setAttributedTitle:[weakSelf attributedStringWithText:@"无法识别该地点" color:[UIColor lightGrayColor] fontSize:13.0] forState:UIControlStateNormal];
-        [reloadButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    };
-    _tableViewController.tableView.noDataImageViewBlock = ^(UIImageView * _Nonnull imageView) {
-        if (weakSelf.tableDataSource.isUnresolvedPlace) {
-            imageView.image = [GMSPlacesResources bundleImageNamed:@"sad_cloud_dark"];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-        }
-        else {
-            imageView.image = nil;
-        }
-    };
-    
+    _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithTableView:_tableViewController.tableView requestSource:_requestSource clearcutRequestOrigin:_clearcutRequestOrigin];
+    _tableDataSource.delegate = self;
     
     if (@available(iOS 9.0, *)) {
         [_tableViewController.tableView setCellLayoutMarginsFollowReadableWidth:0x0];
@@ -105,7 +86,7 @@
         [_tableViewController.tableView setTintColor:tintcolor];
         [_tableDataSource setTintColor:tintcolor];
     }
-    _tableDataSource.tableView = _tableViewController.tableView;
+    
     
 }
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -346,30 +327,6 @@
 {
     [self.tableDataSource setTintColor:tintColor];
     _tableViewController.tableView.tintColor = tintColor;
-}
-
-////////////////////////////////////////////////////////////////////////
-#pragma mark - Others
-////////////////////////////////////////////////////////////////////////
-
-- (NSAttributedString *)attributedStringWithText:(NSString *)string color:(UIColor *)color fontSize:(CGFloat)fontSize {
-    NSString *text = string;
-    UIFont *font = [UIFont systemFontOfSize:fontSize];
-    UIColor *textColor = color;
-    
-    NSMutableDictionary *attributeDict = [NSMutableDictionary new];
-    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
-    style.lineBreakMode = NSLineBreakByWordWrapping;
-    style.alignment = NSTextAlignmentCenter;
-    style.lineSpacing = 4.0;
-    [attributeDict setObject:font forKey:NSFontAttributeName];
-    [attributeDict setObject:textColor forKey:NSForegroundColorAttributeName];
-    [attributeDict setObject:style forKey:NSParagraphStyleAttributeName];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributeDict];
-    
-    return attributedString;
-    
 }
 
 @end

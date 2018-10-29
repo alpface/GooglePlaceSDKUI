@@ -37,32 +37,32 @@ static CGFloat kSearchBarHeight = 44.0f;
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-
-  // Don't overlay the status bar with the search bar when active.
-  self.edgesForExtendedLayout = UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight;
-
-  // Create and setup the search bar.
-  UISearchBar *searchBar = [[UISearchBar alloc]
-      initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
-  searchBar.autoresizingMask =
-      UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-
-  // Construct the autocomplete table datasource.
-  _tableDataSource = [[GMSAutocompleteTableDataSource alloc] init];
-  _tableDataSource.delegate = self;
-
-  // Configure a UISearchDisplayController.
-  _searchDisplayController =
-      [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-  _searchDisplayController.searchResultsDataSource = _tableDataSource;
-  _searchDisplayController.searchResultsDelegate = _tableDataSource;
-  _searchDisplayController.delegate = self;
-  _searchDisplayController.displaysSearchBarInNavigationBar = NO;
-
-  // Add the search bar and tell our superclass to add the result panel below it.
-  [self.view addSubview:searchBar];
-  [self addResultViewBelow:searchBar];
+    [super viewDidLoad];
+    
+    // Don't overlay the status bar with the search bar when active.
+    self.edgesForExtendedLayout = UIRectEdgeLeft | UIRectEdgeBottom | UIRectEdgeRight;
+    
+    // Create and setup the search bar.
+    UISearchBar *searchBar = [[UISearchBar alloc]
+                              initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
+    searchBar.autoresizingMask =
+    UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    
+    // Configure a UISearchDisplayController.
+    _searchDisplayController =
+    [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    _searchDisplayController.delegate = self;
+    _searchDisplayController.displaysSearchBarInNavigationBar = NO;
+    
+    // Construct the autocomplete table datasource.
+    _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithTableView:_searchDisplayController.searchResultsTableView];
+    _tableDataSource.delegate = self;
+    _searchDisplayController.searchResultsDataSource = _tableDataSource;
+    _searchDisplayController.searchResultsDelegate = _tableDataSource;
+    
+    // Add the search bar and tell our superclass to add the result panel below it.
+    [self.view addSubview:searchBar];
+    [self addResultViewBelow:searchBar];
 }
 
 #pragma mark - UISearchDisplayDelegate

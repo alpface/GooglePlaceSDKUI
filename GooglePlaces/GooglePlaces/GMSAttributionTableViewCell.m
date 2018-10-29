@@ -39,11 +39,11 @@
         [self setSelectionStyle:0x0];
         [self setAccessibilityElementsHidden:0x1];
         self.contentView.backgroundColor = [UIColor clearColor];
-        UIImage *logoImage = [GMSPlacesResources bundleImageNamed:@"powered-by-google-light"];
+        UIImage *logoImage = [GMSPlacesResources bundleImageNamed:@"powered-by-google-dark"];
         NSParameterAssert(logoImage);
         _attributionImageView = [[UIImageView alloc] initWithImage:logoImage];
         [self.contentView addSubview:_attributionImageView];
-         [_attributionImageView setAccessibilityIdentifier:@"powered-by-google-light"];
+         [_attributionImageView setAccessibilityIdentifier:@"powered-by-google-dark"];
         _attributionImageView.translatesAutoresizingMaskIntoConstraints = NO;
         [NSLayoutConstraint constraintWithItem:_attributionImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:20.0].active = YES;
         [NSLayoutConstraint constraintWithItem:_attributionImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0].active = YES;
