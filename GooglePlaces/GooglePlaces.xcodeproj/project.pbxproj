@@ -51,6 +51,8 @@
 		D09493E121832A0A00A386D5 /* GMSAutocompleteContentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B521832A0A00A386D5 /* GMSAutocompleteContentViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D09493E221832A0A00A386D5 /* GMSPlaceTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B621832A0A00A386D5 /* GMSPlaceTableViewCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D09493E321832A0A00A386D5 /* GMSPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = D09493B721832A0A00A386D5 /* GMSPlace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0D3325621899E91009540FB /* GMSContrastHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D3325421899E90009540FB /* GMSContrastHelper.h */; };
+		D0D3325721899E91009540FB /* GMSContrastHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3325521899E91009540FB /* GMSContrastHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		D09493B521832A0A00A386D5 /* GMSAutocompleteContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSAutocompleteContentViewController.h; sourceTree = "<group>"; };
 		D09493B621832A0A00A386D5 /* GMSPlaceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSPlaceTableViewCell.h; sourceTree = "<group>"; };
 		D09493B721832A0A00A386D5 /* GMSPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSPlace.h; sourceTree = "<group>"; };
+		D0D3325421899E90009540FB /* GMSContrastHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMSContrastHelper.h; sourceTree = "<group>"; };
+		D0D3325521899E91009540FB /* GMSContrastHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMSContrastHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 				D094939D21832A0700A386D5 /* GooglePlaces.h */,
 				D09493A921832A0800A386D5 /* UIScrollView+NoDataExtend.h */,
 				D094939321832A0600A386D5 /* UIScrollView+NoDataExtend.m */,
+				D0D3325421899E90009540FB /* GMSContrastHelper.h */,
+				D0D3325521899E91009540FB /* GMSContrastHelper.m */,
 				D0949385218329C100A386D5 /* Info.plist */,
 			);
 			path = GooglePlaces;
@@ -196,6 +202,7 @@
 				D09493DA21832A0A00A386D5 /* GMSAutocompletePrediction.h in Headers */,
 				D09493C821832A0A00A386D5 /* GMSPlacesClient.h in Headers */,
 				D09493DC21832A0A00A386D5 /* GMSAutocompleteFetcher.h in Headers */,
+				D0D3325621899E91009540FB /* GMSContrastHelper.h in Headers */,
 				D09493BB21832A0A00A386D5 /* GMSAutocompleteFilter.h in Headers */,
 				D09493CB21832A0A00A386D5 /* GMSPlaceLikelihood.h in Headers */,
 				D09493BE21832A0A00A386D5 /* GMSPlacePhotoMetadata.h in Headers */,
@@ -292,6 +299,7 @@
 				D09493BD21832A0A00A386D5 /* GMSAttributionTableViewCell.m in Sources */,
 				D09493C521832A0A00A386D5 /* GMSPlaceTypes.m in Sources */,
 				D09493C021832A0A00A386D5 /* GMSAutocompleteTableDataSource.m in Sources */,
+				D0D3325721899E91009540FB /* GMSContrastHelper.m in Sources */,
 				D09493DB21832A0A00A386D5 /* GMSPlaceLikelihoodList.m in Sources */,
 				D09493CE21832A0A00A386D5 /* GMSAddressComponent.m in Sources */,
 				D09493BF21832A0A00A386D5 /* UIScrollView+NoDataExtend.m in Sources */,

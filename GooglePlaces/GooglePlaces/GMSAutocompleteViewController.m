@@ -9,6 +9,7 @@
 #import "GMSAutocompleteViewController.h"
 #import "GMSAutocompleteContentViewController.h"
 #import "GMSAutocompleteResultsViewController.h"
+#import "GMSContrastHelper.h"
 
 @interface GMSAutocompleteContentViewController ()
 @property(retain, nonatomic) GMSCoordinateBounds *autocompleteBounds;
@@ -96,21 +97,32 @@
     [super viewWillAppear:animated];
 }
 
-//- (UIStatusBarStyle)preferredStatusBarStyle {
-//
-//    UINavigationController *nac = nil;
-//    if ([_embeddedViewController isKindOfClass:[UINavigationController class]]) {
-//        nac = (id)_embeddedViewController;
-//    }
-//    else {
-//        nac = self.navigationController;
-//    }
-//    if (nac == nil) {
-//        return UIStatusBarStyleLightContent;
-//    }
-//
-//
-//}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    UINavigationController *nac = nil;
+    if ([_embeddedViewController isKindOfClass:[UINavigationController class]]) {
+        nac = (id)_embeddedViewController;
+    }
+    else {
+        nac = self.navigationController;
+    }
+    if (nac == nil) {
+        UIColor *backgroundColor = self.view.backgroundColor;
+        BOOL isLightColor = [GMSContrastHelper isLightColor:backgroundColor];
+        if (isLightColor) {
+            return UIStatusBarStyleDefault;
+        }
+        return UIStatusBarStyleLightContent;
+    }
+    
+    UIColor *barTintColor = [nac navigationBar].barTintColor;
+    BOOL isLightColor = [GMSContrastHelper isLightColor:barTintColor];
+    if (isLightColor) {
+        return UIStatusBarStyleDefault;
+    }
+    return UIStatusBarStyleLightContent;
+    
+}
 
 ////////////////////////////////////////////////////////////////////////
 #pragma mark - Getter \ Setter
