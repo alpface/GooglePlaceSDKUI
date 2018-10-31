@@ -24,7 +24,6 @@
 
 @interface GMSAutocompleteResultsViewController () <GMSAutocompleteTableDataSourceDelegate, UISearchResultsUpdating>
 {
-    UITableViewController *_tableViewController;
     BOOL _isRegisteredForKeyboardNotifications;
     GMSPlacesClient *_placesClient;
     NSString *_widgetCallRequestSource;
@@ -33,6 +32,7 @@
 }
 
 @property(retain, nonatomic) GMSAutocompleteTableDataSource *tableDataSource;
+@property (nonatomic, strong) UITableViewController *tableViewController;
 @property (nonatomic, assign) double sessionStartTime;
 - (instancetype)initWithRequestSource:(NSString *)requestSource widgetCallRequestSource:(NSString *)widgetCallRequestSource clearcutRequestOrigin:(int)clearcutRequestOrigin;
 
@@ -52,15 +52,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    _tableViewController.view.frame = self.view.bounds;
+    self.tableViewController.view.frame = self.view.bounds;
     [self addChildViewController:_tableViewController];
     [self.view addSubview:_tableViewController.view];
-    [_tableViewController didMoveToParentViewController:self];
+    [self.tableViewController didMoveToParentViewController:self];
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectZero];
-    [_tableViewController.tableView setTableFooterView:footerView];
-    _tableViewController.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    [self.tableViewController.tableView setTableFooterView:footerView];
+    self.tableViewController.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    
+    self.tableDataSource.delegate = self;
+    
     [self.view setBackgroundColor:_tableDataSource.tableCellBackgroundColor];
     _tableViewController.tableView.backgroundColor = _tableDataSource.tableCellBackgroundColor;
     _tableViewController.tableView.tintColor = _tableDataSource.tintColor;
@@ -71,8 +72,7 @@
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[_tableViewController]|" options:kNilOptions metrics:nil views:@{@"_tableViewController": _tableViewController.view}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableViewController]|" options:kNilOptions metrics:nil views:@{@"_tableViewController": _tableViewController.view}]];
     
-    _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithTableView:_tableViewController.tableView requestSource:_requestSource clearcutRequestOrigin:_clearcutRequestOrigin];
-    _tableDataSource.delegate = self;
+    
     
     if (@available(iOS 9.0, *)) {
         [_tableViewController.tableView setCellLayoutMarginsFollowReadableWidth:0x0];
@@ -86,7 +86,7 @@
         [_tableViewController.tableView setTintColor:tintcolor];
         [_tableDataSource setTintColor:tintcolor];
     }
-    
+
     
 }
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -269,13 +269,13 @@
 ////////////////////////////////////////////////////////////////////////
 - (UIColor *)tableCellBackgroundColor
 {
-    return _tableDataSource.tableCellBackgroundColor;
+    return self.tableDataSource.tableCellBackgroundColor;
 }
 
 - (void)setTableCellBackgroundColor:(UIColor *)tableCellBackgroundColor
 {
     [self.tableDataSource setTableCellBackgroundColor:tableCellBackgroundColor];
-    _tableViewController.tableView.backgroundColor = tableCellBackgroundColor;
+    self.tableViewController.tableView.backgroundColor = tableCellBackgroundColor;
 }
 
 - (UIColor *)tableCellSeparatorColor
@@ -326,7 +326,19 @@
 - (void)setTintColor:(UIColor *)tintColor
 {
     [self.tableDataSource setTintColor:tintColor];
-    _tableViewController.tableView.tintColor = tintColor;
+    self.tableViewController.tableView.tintColor = tintColor;
 }
 
+- (UITableViewController *)tableViewController {
+    if (_tableViewController == nil) {
+        _tableViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    return _tableViewController;
+}
+- (GMSAutocompleteTableDataSource *)tableDataSource {
+    if (_tableDataSource == nil) {
+        _tableDataSource = [[GMSAutocompleteTableDataSource alloc] initWithTableView:self.tableViewController.tableView];
+    }
+    return _tableDataSource;
+}
 @end
