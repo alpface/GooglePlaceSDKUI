@@ -22,7 +22,7 @@ static CGFloat kTypeIconWidth = 35.0;
 @property (nonatomic, copy) void (^longPressGestureRecognizerBlock)(UILongPressGestureRecognizer *longPressGes);
 @property (nonatomic, weak) NSLayoutConstraint *contentTopCons;
 @property (nonatomic, weak) NSLayoutConstraint *contentBottomCons;
-@property (nonatomic, strong) UIView *bottomLineView;
+//@property (nonatomic, strong) UIView *bottomLineView;
 @property (nonatomic, strong) NSLayoutConstraint *typeIconViewWidthConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *textContentViewLeftConstraint1;
 @property (nonatomic, strong) NSLayoutConstraint *textContentViewLeftConstraint2;
@@ -57,10 +57,10 @@ static CGFloat kTypeIconWidth = 35.0;
     [self.secondaryTextLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.distanceAndTimeLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     
-    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = YES;
-    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5].active = YES;
+//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0].active = YES;
+//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0].active = YES;
+//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = YES;
+//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5].active = YES;
     
     [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0].active = true;
     _typeIconViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTypeIconWidth];
@@ -150,15 +150,15 @@ static CGFloat kTypeIconWidth = 35.0;
     return _typeIconView;
 }
 
-- (UIView *)bottomLineView {
-    if (!_bottomLineView) {
-        _bottomLineView = [UIView new];
-        _bottomLineView.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1.0f];
-        _bottomLineView.translatesAutoresizingMaskIntoConstraints = false;
-        [self.contentView addSubview:_bottomLineView];
-    }
-    return _bottomLineView;
-}
+//- (UIView *)bottomLineView {
+//    if (!_bottomLineView) {
+//        _bottomLineView = [UIView new];
+//        _bottomLineView.backgroundColor = [UIColor colorWithRed:235/255.0f green:235/255.0f blue:235/255.0f alpha:1.0f];
+//        _bottomLineView.translatesAutoresizingMaskIntoConstraints = false;
+//        [self.contentView addSubview:_bottomLineView];
+//    }
+//    return _bottomLineView;
+//}
 
 - (NSLayoutConstraint *)secondaryTextLabelConstraint {
     if (!_secondaryTextLabelConstraint) {
