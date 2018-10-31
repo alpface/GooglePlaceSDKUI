@@ -25,6 +25,7 @@
 		D099AFD121832B31009A0464 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D099AFC221832B31009A0464 /* DemoListViewController.m */; };
 		D099AFD621832CDC009A0464 /* GMSPlacesResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D099AFD521832CDC009A0464 /* GMSPlacesResources.bundle */; };
 		D099AFE62183307D009A0464 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099AFE52183307D009A0464 /* GooglePlaces.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D0D3325D2189A248009540FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0D3325B2189A248009540FB /* Localizable.strings */; };
 		D2398E7321841AC0000EED32 /* GooglePlaces.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D099AFE52183307D009A0464 /* GooglePlaces.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		D099AFC421832B31009A0464 /* SDKDemoAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKDemoAPIKey.h; sourceTree = "<group>"; };
 		D099AFD521832CDC009A0464 /* GMSPlacesResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GMSPlacesResources.bundle; sourceTree = "<group>"; };
 		D099AFE52183307D009A0464 /* GooglePlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D3325C2189A248009540FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		D099AFC321832B31009A0464 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0D3325B2189A248009540FB /* Localizable.strings */,
 				D099AFD521832CDC009A0464 /* GMSPlacesResources.bundle */,
 			);
 			path = Resources;
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D094936E2183295700A386D5 /* LaunchScreen.storyboard in Resources */,
+				D0D3325D2189A248009540FB /* Localizable.strings in Resources */,
 				D094936B2183295700A386D5 /* Assets.xcassets in Resources */,
 				D099AFD621832CDC009A0464 /* GMSPlacesResources.bundle in Resources */,
 			);
@@ -284,6 +288,14 @@
 				D094936D2183295700A386D5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D0D3325B2189A248009540FB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0D3325C2189A248009540FB /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
