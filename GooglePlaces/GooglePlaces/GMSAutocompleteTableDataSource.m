@@ -338,6 +338,9 @@
         if (_sourceText.length == 0) {
             return 0;
         }
+        if (_forceDisplayOfLoadingSpinner == 0x1) {
+            return 0;
+        }
         // 匹配结果
         return _predictions.count;
     }
@@ -424,21 +427,30 @@
            BOOL res = [self.delegate tableDataSource:self didSelectPrediction:prediction];
             if (res == YES) {
                 _isFetchingPlaceDetails = 0x1;
+                _forceDisplayOfLoadingSpinner = 0x1;
+                [self.tableView xy_beginLoading];
                 [tableView reloadData];
                 NSString *placeID = [prediction placeID];
 //                NSString *requestSource = _fetcher.requestSource;
                 [[GMSPlacesClient sharedClient] lookUpPlaceID:placeID lang:kGMSPlacesLangCH callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
-                    
+                    if (error == nil) {
+                        if ([self.delegate respondsToSelector:@selector(tableDataSource:didAutocompleteWithPlace:)]) {
+                            [self.delegate tableDataSource:self didAutocompleteWithPlace:result];
+                        }
+                    }
+                    else {
+                        if ([self.delegate respondsToSelector:@selector(tableDataSource:didFailAutocompleteWithError:)]) {
+                            [self.delegate tableDataSource:self didFailAutocompleteWithError:error];
+                        }
+                    }
+                    self->_isFetchingPlaceDetails = 0x0;
+                    self->_forceDisplayOfLoadingSpinner = 0x0;
+                    [self.tableView xy_beginLoading];
                 }];
             }
             else {
-                _isFetchingPlaceDetails = 0x1;
+                _isFetchingPlaceDetails = 0x0;
                 [tableView reloadData];
-                NSString *placeID = [prediction placeID];
-//                NSString *requestSource = _fetcher.requestSource;
-                [[GMSPlacesClient sharedClient] lookUpPlaceID:placeID lang:kGMSPlacesLangCH callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
-                    
-                }];
             }
         }
     }
@@ -462,16 +474,13 @@
     [self didClickTryAgainButton:button];
 }
 - (BOOL)noDataPlaceholderShouldDisplay:(UIScrollView *)scrollView {
-    if ([self isUnresolvedPlace] || _fetcher.isWaitingForPredictions == YES) {
+    if ([self isUnresolvedPlace] || _fetcher.isWaitingForPredictions == YES || _forceDisplayOfLoadingSpinner == 0x1) {
         return YES;
     }
     return NO;
 }
 
 - (BOOL)noDataPlaceholderShouldBeForcedToDisplay:(UIScrollView *)scrollView {
-    if (_predictions.count) {
-        return NO;
-    }
     if ([self noDataPlaceholderShouldDisplay:scrollView]) {
         return YES;
     }

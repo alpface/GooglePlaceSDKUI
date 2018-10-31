@@ -8,7 +8,8 @@
 
 #import "GMSPlaceTableViewCell.h"
 
-static CGFloat kTypeIconWidth = 35.0;
+static const CGFloat kTypeIconWidth = 35.0;
+static const CGFloat vPadding = 7.0;
 
 @interface GMSPlaceTableViewCell ()
 
@@ -57,10 +58,10 @@ static CGFloat kTypeIconWidth = 35.0;
     [self.secondaryTextLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.distanceAndTimeLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     
-//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0].active = YES;
-//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0].active = YES;
-//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = YES;
-//    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5].active = YES;
+    //    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0].active = YES;
+    //    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0].active = YES;
+    //    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = YES;
+    //    [NSLayoutConstraint constraintWithItem:self.bottomLineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5].active = YES;
     
     [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:16.0].active = true;
     _typeIconViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTypeIconWidth];
@@ -68,10 +69,10 @@ static CGFloat kTypeIconWidth = 35.0;
     [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.typeIconView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0].active = true;
     [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0].active = true;
     
-    [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:5.0].active = true;
-    [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-5.0].active = true;
+    [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0].active = true;
+    [NSLayoutConstraint constraintWithItem:self.typeIconView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0].active = true;
     
-   _textContentViewLeftConstraint1 = [NSLayoutConstraint constraintWithItem:self.textContentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.typeIconView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:10.0];
+    _textContentViewLeftConstraint1 = [NSLayoutConstraint constraintWithItem:self.textContentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.typeIconView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:10.0];
     _textContentViewLeftConstraint1.active = YES;
     _textContentViewLeftConstraint2 = [NSLayoutConstraint constraintWithItem:self.textContentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.typeIconView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
     [NSLayoutConstraint constraintWithItem:self.textContentView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0].active = true;
@@ -84,7 +85,7 @@ static CGFloat kTypeIconWidth = 35.0;
     textContentViewBottom.active = YES;
     _contentBottomCons = textContentViewBottom;
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(6.0)-[primaryTextLabel]-(6.0)-[secondaryTextLabel]-(6.0)-[distanceAndTimeLabel]-(6.0)-|" options:NSLayoutFormatAlignAllLeading metrics:nil views:@{@"primaryTextLabel": self.primaryTextLabel, @"secondaryTextLabel": self.secondaryTextLabel, @"distanceAndTimeLabel": self.distanceAndTimeLabel}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(vPadding)-[primaryTextLabel]-(vPadding)-[secondaryTextLabel]-(vPadding)-[distanceAndTimeLabel]-(vPadding)-|" options:NSLayoutFormatAlignAllLeading metrics:@{@"vPadding": @(vPadding)} views:@{@"primaryTextLabel": self.primaryTextLabel, @"secondaryTextLabel": self.secondaryTextLabel, @"distanceAndTimeLabel": self.distanceAndTimeLabel}]];
     [NSLayoutConstraint constraintWithItem:self.primaryTextLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.textContentView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0].active = true;
     [NSLayoutConstraint constraintWithItem:self.primaryTextLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.textContentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = true;
     [NSLayoutConstraint constraintWithItem:self.secondaryTextLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.textContentView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0].active = true;
@@ -194,24 +195,23 @@ static CGFloat kTypeIconWidth = 35.0;
 - (void)updateConstraints
 {
     [super updateConstraints];
-    const CGFloat padding = 6.0;
     if (self.primaryTextLabel.text.length == 0) {
         self.primaryTextLabelTopConstraint.constant = 0.0;
     }
     else {
-        self.primaryTextLabelTopConstraint.constant = padding;
+        self.primaryTextLabelTopConstraint.constant = vPadding;
     }
     if (self.secondaryTextLabel.text.length == 0) {
         self.secondaryTextLabelConstraint.constant = 0.0;
     }
     else {
-        self.secondaryTextLabelConstraint.constant = padding;
+        self.secondaryTextLabelConstraint.constant = vPadding;
     }
     if (self.distanceAndTimeLabel.text.length == 0) {
         self.distanceAndTimeLabelConstraint.constant = 0.0;
     }
     else {
-        self.distanceAndTimeLabelConstraint.constant = padding;
+        self.distanceAndTimeLabelConstraint.constant = vPadding;
     }
     if (self.typeIconView.image) {
         self.typeIconViewWidthConstraint.constant = kTypeIconWidth;
@@ -223,8 +223,9 @@ static CGFloat kTypeIconWidth = 35.0;
         _textContentViewLeftConstraint1.active = NO;
         _textContentViewLeftConstraint2.active = YES;
     }
-    self.contentTopCons.constant = 15.0;
-    self.contentBottomCons.constant = -15.0;
+    self.contentTopCons.constant = 0.0;
+    self.contentBottomCons.constant = 0.0;
 }
+
 
 @end
