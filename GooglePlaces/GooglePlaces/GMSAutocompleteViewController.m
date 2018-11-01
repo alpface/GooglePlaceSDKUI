@@ -115,8 +115,23 @@
         return UIStatusBarStyleLightContent;
     }
     
-    UIColor *barTintColor = [nac navigationBar].barTintColor;
-    BOOL isLightColor = [GMSContrastHelper isLightColor:barTintColor];
+    UIColor *backgroundColor = [nac navigationBar].barTintColor;
+    if (backgroundColor == nil) {
+        backgroundColor = nac.navigationBar.backgroundColor;
+    }
+    if (backgroundColor == nil) {
+        backgroundColor = self.view.backgroundColor;
+    }
+    if (backgroundColor == nil) {
+        backgroundColor = nac.viewControllers.firstObject.view.backgroundColor;
+    }
+    if (backgroundColor == nil) {
+        backgroundColor = nac.view.backgroundColor;
+    }
+    if (backgroundColor == nil) {
+        return UIStatusBarStyleLightContent;
+    }
+    BOOL isLightColor = [GMSContrastHelper isLightColor:backgroundColor];
     if (isLightColor) {
         return UIStatusBarStyleDefault;
     }
