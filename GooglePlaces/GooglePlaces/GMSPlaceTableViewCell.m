@@ -50,7 +50,7 @@ static const CGFloat vPadding = 7.0;
 #pragma mark - UI
 ////////////////////////////////////////////////////////////////////////
 - (void)setupViews {
-    self.contentView.backgroundColor = [UIColor clearColor];
+    self.contentView.backgroundColor = nil;
     [self.primaryTextLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.secondaryTextLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.distanceAndTimeLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
@@ -135,6 +135,7 @@ static const CGFloat vPadding = 7.0;
     if (!_textContentView) {
         UIView *textContentView = [UIView new];
         _textContentView = textContentView;
+        textContentView.backgroundColor = nil;
         _textContentView.translatesAutoresizingMaskIntoConstraints = false;
         [self.contentView addSubview:_textContentView];
     }

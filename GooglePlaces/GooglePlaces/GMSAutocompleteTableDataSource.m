@@ -99,10 +99,10 @@
 - (void)configureWithTableView:(UITableView *)tableView requestSource:(NSString *)requestSource clearcutRequestOrigin:(BOOL)clearcutRequestOrigin
 {
     _predictions = [NSMutableArray array];
-    _defaultTableCellBackgroundColor =[UIColor colorWithWhite:0x3f733333 alpha:0x3f800000];
-    _defaultTableCellSeparatorColor = [UIColor colorWithWhite:0x0 alpha:0x3e4ccccd];
-    _defaultPrimaryTextColor = [UIColor lightGrayColor];
-    _defaultPrimaryTextHighlightColor = [_defaultPrimaryTextColor colorWithAlphaComponent:0x3f0a3d71];
+    _defaultTableCellBackgroundColor =[UIColor colorWithWhite:0.95 alpha:1.0];
+    _defaultTableCellSeparatorColor = [UIColor colorWithRed:0.78 green:0.78 blue:0.78 alpha:1.0];
+    _defaultPrimaryTextColor = [UIColor colorWithWhite:0 alpha:0.54];
+    _defaultPrimaryTextHighlightColor = [_defaultPrimaryTextColor colorWithAlphaComponent:1.0];
     _defaultSecondaryTextColor = _defaultPrimaryTextColor;
     
     _fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:0x0 filter:0x0 requestSource:requestSource];
@@ -115,6 +115,10 @@
     //    [_sessionStats setOrigin:0x2];
     NSParameterAssert(tableView);
     _tableView = tableView;
+    if (tableView.tableFooterView == nil) {
+        // 无数据时不显示多余的分割线
+         tableView.tableFooterView = [[UIView alloc] init];
+    }
     /// 设置空数据
     tableView.noDataPlaceholderDelegate = self;
     __weak typeof(self) weakSelf = self;
